@@ -5,7 +5,7 @@ import { Role } from './src/models/Role';
 import { Permission } from './src/models/Permission';
 import bcrypt from 'bcryptjs';
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://Mohankalyan_resq:Mohankalyan_resq@cluster0.setaqhy.mongodb.net/resq?appName=Cluster0';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/resq?directConnection=true';
 
 const PERMISSIONS = [
     { scope: 'incident:create', description: 'Create new incidents', module: 'incidents' },

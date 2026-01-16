@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import { IncidentModel } from './src/models/Incident';
 import { IIncident } from '@repo/types';
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://Mohankalyan_resq:Mohankalyan_resq@cluster0.setaqhy.mongodb.net/resq?appName=Cluster0';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/resq?directConnection=true';
 
 const INCIDENTS: Partial<IIncident>[] = [
     {

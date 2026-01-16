@@ -23,6 +23,7 @@
 ## 📋 Prerequisites
 
 Ensure you have the following installed:
+
 - **Node.js**: v18+ (Recommended: v20.18.1)
 - **pnpm**: v8+ or v9+
 - **Docker & Docker Compose**: Required for database infrastructure
@@ -30,6 +31,7 @@ Ensure you have the following installed:
 ## 🏁 Getting Started
 
 ### 1. Clone & Install
+
 ```bash
 git clone <your-repo-url>
 cd resq
@@ -39,25 +41,33 @@ pnpm install
 ```
 
 ### 2. Start Infrastructure
+
 Launch MongoDB (Replica Set) and Redis containers.
+
 ```bash
 docker-compose up -d
 ```
-*Wait a few seconds for MongoDB to initialize the replica set logic defined in healthchecks.*
+
+_Wait a few seconds for MongoDB to initialize the replica set logic defined in healthchecks._
 
 ### 3. Seed Database
+
 Initialize the database with default roles, permissions, and test users.
+
 ```bash
 pnpm --filter api seed
 ```
 
 ### 4. Start Development
+
 Run both the API and Web applications in parallel.
+
 ```bash
 pnpm dev
 ```
 
 ACCESS:
+
 - **Web Interface**: [http://localhost:5173](http://localhost:5173)
 - **API Swagger Docs**: [http://localhost:4000/docs](http://localhost:4000/docs)
 
@@ -65,12 +75,12 @@ ACCESS:
 
 Use these accounts to test different role-based permissions:
 
-| Role | Email | Password | Capabilities |
-|------|-------|----------|--------------|
-| **Admin** | `admin@resq.local` | `Admin123!` | Full system access, User/Role management |
-| **Dispatcher** | `dispatch@resq.local` | `Dispatch123!` | Manage incidents, resources, and map data |
-| **Volunteer** | `volunteer@resq.local` | `Volunteer123!` | View tasks, Accept assignments |
-| **Civilian** | `civilian@resq.local` | `Help123!` | Report incidents, View public map |
+| Role           | Email                  | Password        | Capabilities                              |
+| -------------- | ---------------------- | --------------- | ----------------------------------------- |
+| **Admin**      | `admin@resq.local`     | `Admin123!`     | Full system access, User/Role management  |
+| **Dispatcher** | `dispatch@resq.local`  | `Dispatch123!`  | Manage incidents, resources, and map data |
+| **Volunteer**  | `volunteer@resq.local` | `Volunteer123!` | View tasks, Accept assignments            |
+| **Civilian**   | `civilian@resq.local`  | `Help123!`      | Report incidents, View public map         |
 
 ## 🏗 Project Architecture
 
@@ -92,6 +102,7 @@ Use these accounts to test different role-based permissions:
 
 **MongoDB Connection Error?**
 Ensure existing Mongo containers are removed before starting fresh to avoid volume conflicts with the replica set configuration.
+
 ```bash
 docker-compose down -v
 docker-compose up -d
@@ -99,6 +110,7 @@ docker-compose up -d
 
 **"Types not found"?**
 If you change `packages/types`, ensure you run the build command so dependent apps pick up the changes.
+
 ```bash
 pnpm build
 ```

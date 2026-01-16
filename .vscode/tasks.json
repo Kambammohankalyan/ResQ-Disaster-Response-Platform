@@ -1,0 +1,29 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build Types",
+			"type": "shell",
+			"command": "pnpm --filter @repo/types build",
+			"group": "build"
+		},
+		{
+			"label": "Install Dependencies",
+			"type": "shell",
+			"command": "pnpm install",
+			"group": "build"
+		},
+		{
+			"label": "Install Frontend Deps",
+			"type": "shell",
+			"command": "pnpm install",
+			"group": "build"
+		},
+		{
+			"label": "Install Deps Try 2",
+			"type": "shell",
+			"command": "pnpm install",
+			"group": "build"
+		}
+	]
+}

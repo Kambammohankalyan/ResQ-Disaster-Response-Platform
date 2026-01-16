@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/create-next-app).
+# ResQ - Disaster Management System
 
-## Getting Started
+## Project Status:  Ready for Deployment
 
-First, run the development server:
+This project has been implemented according to the 'ResQ' architectural blueprint. It is a strictly typed, offline-first monorepo designed for high-availability disaster management.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Architecture
+- **Infrastructure**: MongoDB Replica Set (ACID transactions), Redis (BullMQ), Docker Compose.
+- **Backend**: Node.js/Express with **Tsoa** (Auto-Swagger) and **BullMQ** (Sandboxed Workers).
+- **Frontend**: React 19 + Vite with **TanStack Query** (Offline Persistence) and **MapLibre** (No-token Maps).
+- **Shared**: strict TypeScript interfaces in \packages/types\.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+###  How to Run
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Start Infrastructure** (Database & Queue)
+   \\\ash
+   docker-compose up -d
+   \\\`n   *Wait ~10 seconds for the MongoDB Replica Set to initialize.*
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load Inter, a custom Google Font.
+2. **Install Dependencies**
+   \\\ash
+   pnpm install
+   \\\`n
+3. **Start Development Server**
+   \\\ash
+   pnpm dev
+   \\\`n   This will start both the API and Web apps in parallel via Turbo.
 
-## Learn More
+###  Access Points
+- **Web App**: [http://localhost:5173](http://localhost:5173) - Map, Incident Reporting, Offline Sync.
+- **API Swagger Docs**: [http://localhost:4000/docs](http://localhost:4000/docs) - OpenAPI exploration.
+- **API Health**: [http://localhost:4000/health](http://localhost:4000/health)
 
-To learn more about Next.js, take a look at the following resources:
+###  Project Structure
+- \pps/api\: Backend service.
+- \pps/web\: Frontend application (Offline-first configured).
+- \packages/types\: Shared domain models (IIncident, IResource).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+###  Verification Steps
+1. Open the Web App.
+2. Go Offline (DevTools > Network > Offline).
+3. Submit an Incident.
+4. Refresh the page (Data will persist from LocalStorage).
+5. Go Online.
+6. The incident will sync to Backend (Check \docker logs\ or Swagger GET /incidents).

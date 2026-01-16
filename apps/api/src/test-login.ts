@@ -1,9 +1,10 @@
 
+import 'dotenv/config';
 import mongoose from 'mongoose';
 import { User } from './models/User';
 import bcrypt from 'bcryptjs';
 
-const MONGO_URI = 'mongodb://127.0.0.1:27017/resq?directConnection=true';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/resq?directConnection=true';
 
 async function test() {
     await mongoose.connect(MONGO_URI);

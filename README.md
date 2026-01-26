@@ -2,7 +2,7 @@
 
 **ResQ** is a high-availability, offline-first Disaster Management platform designed for degraded network environments. It enables real-time incident reporting, resource management, and coordination between dispatchers and volunteers.
 
-## 🚀 Features
+## Features
 
 - **Offline-First**: Full functionality without internet connection using TanStack Query; automatic synchronization when online.
 - **Real-time Coordination**: Socket.io integration for live updates on incidents and resources.
@@ -11,7 +11,7 @@
 - **Reliable Processing**: Background job processing with BullMQ and Redis sandboxed workers.
 - **ACID Transactions**: MongoDB Replica Set configured for data integrity.
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Monorepo**: Turborepo, pnpm
 - **Backend**: Node.js, Express, Tsoa (Code-first OpenAPI), Mongoose
@@ -20,7 +20,7 @@
 - **Frontend**: React 18, Vite, TailwindCSS, TanStack Query v5
 - **Mapping**: react-map-gl, maplibre-gl
 
-## 📋 Prerequisites
+## Prerequisites
 
 Ensure you have the following installed:
 
@@ -28,7 +28,7 @@ Ensure you have the following installed:
 - **pnpm**: v8+ or v9+
 - **Docker & Docker Compose**: Required for database infrastructure
 
-## 🏁 Getting Started
+## Getting Started
 
 ### 1. Clone & Install
 
@@ -71,7 +71,7 @@ ACCESS:
 - **Web Interface**: [http://localhost:5173](http://localhost:5173)
 - **API Swagger Docs**: [http://localhost:4000/docs](http://localhost:4000/docs)
 
-## 🔐 Default Credentials
+## Default Credentials
 
 Use these accounts to test different role-based permissions:
 
@@ -82,7 +82,7 @@ Use these accounts to test different role-based permissions:
 | **Volunteer**  | `volunteer@resq.local` | `Volunteer123!` | View tasks, Accept assignments            |
 | **Civilian**   | `civilian@resq.local`  | `Help123!`      | Report incidents, View public map         |
 
-## 🏗 Project Architecture
+## Project Architecture
 
 ```
 /
@@ -98,7 +98,7 @@ Use these accounts to test different role-based permissions:
 └── turbo.json         # Build pipeline config
 ```
 
-## ⚠️ Troubleshooting
+## Troubleshooting
 
 **MongoDB Connection Error?**
 Ensure existing Mongo containers are removed before starting fresh to avoid volume conflicts with the replica set configuration.

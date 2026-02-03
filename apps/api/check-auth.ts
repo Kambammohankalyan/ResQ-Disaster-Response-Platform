@@ -14,23 +14,23 @@ const check = async () => {
     try {
         console.log('Connecting to:', MONGO_URI);
         await mongoose.connect(MONGO_URI);
-        console.log('✅ Connected to MongoDB Atlas');
+        console.log(' Connected to MongoDB Atlas');
 
         const email = 'admin@resq.local'; 
         
         // 1. Raw User Check
-        console.log(`\n🔍 Checking for user: ${email}...`);
+        console.log(`\n Checking for user: ${email}...`);
         const user = await User.findOne({ email }).select('+password').lean();
         
         if (!user) {
-            console.error('❌ User NOT FOUND in database.');
+            console.error(' User NOT FOUND in database.');
             console.log('Attempting to list ALL users to see what exists...');
             const allUsers = await User.find({}, 'email firstName lastName roles');
             console.table(allUsers);
             return;
         }
 
-        console.log('✅ User FOUND:', { 
+        console.log(' User FOUND:', { 
             id: user._id, 
             email: user.email, 
             hasPassword: !!user.password,

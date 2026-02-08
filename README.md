@@ -36,7 +36,7 @@ Ensure you have the following installed:
 git clone <your-repo-url>
 cd resq
 
-# Install dependencies for all workspaces
+# Install dependencies
 pnpm install
 ```
 
